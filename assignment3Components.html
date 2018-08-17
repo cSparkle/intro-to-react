@@ -12,17 +12,37 @@
      
      <script type="text/babel">
         class Name extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    name: 'Cortney'
+                };
+            }
+
+            toggleName() {
+                if(this.state.name === 'Cortney') {
+                    this.setState({
+                        name: 'Bloc'
+                    });
+                } else {
+                    this.setState({
+                        name: 'Cortney'
+                    });
+                }
+            }
+            
             render() {
                 return (
                     <div>
-                        <h1>Cortney Thomas</h1>
+                        <h1 onClick={this.toggleName.bind(this)}>{this.props.greeting + ' ' + this.state.name}</h1>
                     </div>
                 );
             }
         }
 
         ReactDOM.render(
-            <Name />, document.getElementById('container')
+            <Name greeting='Hello'/>, document.getElementById('container')
         );
      </script>
   </body>
